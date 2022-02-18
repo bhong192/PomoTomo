@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:pomotomo/screens/timer_page.dart';
+import 'package:pomotomo/screens/stats_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+const appbarColor = const Color(0xFF77DD76);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.lightGreen,
       ),
       home: const MyHomePage(title: 'PomoTomo'),
     );
@@ -24,15 +29,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -41,25 +37,80 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    // instead of passing in a widget, pass in a class to load more than 1 thing
+    timer_page(),
+    stats_page(),
+    Text(
+      'Index 2: School',
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
+        child: _widgetOptions.elementAt(_selectedIndex),
+        // Column(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: <Widget>[
+        //     Row(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: ElevatedButton(
+        //               onPressed:() {
+        //
+        //               },
+        //               child:Text("Start")
+        //           ),
+        //         ),
+        //         Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: ElevatedButton(
+        //             onPressed:(){
+        //
+        //             },
+        //             child:Text("Cancel")
+        //           ),
+        //         )
+        //       ],
+        //     ),
+        //
+        //   ],
+        // ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_time_outlined),
+            label: 'Timer',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.analytics_outlined),
+            label: 'Stats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment_turned_in_outlined),
+            label: 'Tasks',
+          ),
+        ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.green,
+          onTap: _onItemTapped,
+        ),
     );
   }
 }
+
