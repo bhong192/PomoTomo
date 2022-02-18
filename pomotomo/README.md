@@ -1,4 +1,4 @@
-# pomotomo
+# Pomotomo
 
 Pomodoro Timer with To-Do List functionality
 
