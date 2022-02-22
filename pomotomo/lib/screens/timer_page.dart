@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 class timer_page extends StatefulWidget {
   const timer_page({Key? key}) : super(key: key);
@@ -9,6 +11,27 @@ const timerColor = const Color(0xFFF16868);
 // 77DD76
 
 class _State extends State<timer_page> {
+
+  String greeting = "";
+  Timer? _timer;
+
+  @override
+  void initState(){
+    super.initState();
+    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+      setState((){
+        greeting = "Periodic ${DateTime.now().second}";
+      });
+    });
+
+    // Timer(const Duration(seconds:5),(){
+    //   setState((){
+    //     greeting = "after some time";
+    //   });
+    // });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +55,8 @@ class _State extends State<timer_page> {
                        ),
                      ),
                    ),
-                   const Center(
-                       child: Text("25:00", style: TextStyle(fontSize: 35))
+                   Center(
+                       child: Text(greeting, style: TextStyle(fontSize: 35))
                    ),
 
 
@@ -41,6 +64,9 @@ class _State extends State<timer_page> {
                  ],
                ),
              ),
+             Text(greeting),
+
+
              Padding(
                padding: const EdgeInsets.all(35.0),
                child: Row(
@@ -59,7 +85,7 @@ class _State extends State<timer_page> {
 
                    ElevatedButton(
                      onPressed: (){
-
+                      _timer?.cancel();
                      },
                      child: const Text("Give Up"),
                    ),
