@@ -9,6 +9,24 @@ class  todo_list_page extends StatefulWidget {
 class _State extends State<todo_list_page> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: <Widget>[
+
+            FloatingActionButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20)
+              ),
+              onPressed: (){
+
+              },
+              child: const Icon(Icons.add),
+            ),
+          ],
+        ),
+      ),
+
+    );
   }
 }

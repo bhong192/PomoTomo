@@ -3,6 +3,7 @@ import 'package:pomotomo/screens/simple_timer_page.dart';
 import 'dart:async';
 import 'package:pomotomo/screens/timer_page.dart';
 import 'package:pomotomo/screens/stats_page.dart';
+import 'package:pomotomo/screens/todo_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,9 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //timer_page(),
     simple_timer_page(),
     stats_page(),
-    Text(
-      'Index 2: School',
-    ),
+    todo_list_page(),
   ];
 
   void _onItemTapped(int index) {

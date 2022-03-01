@@ -24,15 +24,20 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
     super.initState();
   }
 
+  void restartTimer(){
+    _timerController.reset();
+    _timerController.pause();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(
           children: <Widget>[
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
+              Container(
+                padding: const EdgeInsets.all(35),
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 child: SimpleTimer(
                   duration: const Duration(minutes: 25),
                   controller: _timerController,
@@ -41,10 +46,11 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
                   backgroundColor: Colors.blueGrey,
                   progressIndicatorDirection: TimerProgressIndicatorDirection.clockwise,
                   progressTextCountDirection: TimerProgressTextCountDirection.count_down,
+                  progressTextStyle: const TextStyle(fontSize: 65),
                   strokeWidth: 10,
                 ),
               ),
-            ),
+
             Column(
               children:<Widget>[
                 const Text("Ready to be productive?", textAlign: TextAlign.left, style: TextStyle(fontWeight: FontWeight.bold)),
@@ -57,15 +63,10 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
 
                     ),
                     ElevatedButton(
-                      onPressed: _timerController.restart,
+                      onPressed: restartTimer,
                       child: const Text("Restart"),
 
                     ),
-                    ElevatedButton(
-                      onPressed: _timerController.pause,
-                      child: const Text("Pause"),
-
-                    )
                   ],
 
                 ),
