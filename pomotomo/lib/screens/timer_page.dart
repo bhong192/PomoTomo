@@ -1,5 +1,6 @@
 import 'dart:async';
 
+
 import 'package:flutter/material.dart';
 class timer_page extends StatefulWidget {
   const timer_page({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class timer_page extends StatefulWidget {
   @override
   _State createState() => _State();
 }
-const timerColor = const Color(0xFFF16868);
+const timerColor = Color(0xFFF16868);
 // 77DD76
 
 class _State extends State<timer_page> {

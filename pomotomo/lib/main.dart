@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomotomo/screens/simple_timer_page.dart';
 import 'dart:async';
 import 'package:pomotomo/screens/timer_page.dart';
 import 'package:pomotomo/screens/stats_page.dart';
@@ -40,7 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     // instead of passing in a widget, pass in a class to load more than 1 thing
-    timer_page(),
+
+    //timer_page(),
+    simple_timer_page(),
     stats_page(),
     Text(
       'Index 2: School',
