@@ -1,11 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:pomotomo/screens/simple_timer_page.dart';
+import 'package:pomotomo/screens/splash_screen.dart';
 import 'dart:async';
 import 'package:pomotomo/screens/timer_page.dart';
 import 'package:pomotomo/screens/stats_page.dart';
 import 'package:pomotomo/screens/todo_list_page.dart';
+import 'package:pomotomo/screens/login_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -23,7 +31,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
-      home: const MyHomePage(title: 'PomoTomo'),
+      // TODO: CHANGE BACK TO HOMEPAGE IF SPLASH IS NOT NEEDED
+      home: const splash_screen(),//const MyHomePage(title: 'PomoTomo'),
     );
   }
 }
@@ -45,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //timer_page(),
     simple_timer_page(),
-    stats_page(),
+    login_page(),
     todo_list_page(),
   ];
 
