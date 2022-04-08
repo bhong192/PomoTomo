@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //timer_page(),
     simple_timer_page(),
-    login_page(),
+    stats_page(),
     todo_list_page(),
   ];
 

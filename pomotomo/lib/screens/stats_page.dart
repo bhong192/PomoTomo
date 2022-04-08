@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class stats_page extends StatefulWidget {
   const stats_page({Key? key}) : super(key: key);
 
@@ -11,9 +12,21 @@ class _State extends State<stats_page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: const Text("UwU")
-      ),
+          child: Column(
+              children: const <Widget>[
+                SizedBox(height: 300),
 
+                //TODO: add graph
+
+                Text("You've been studying for 25 minutes!",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ]
+
+          ),
+
+
+
+      ),
     );
   }
 }

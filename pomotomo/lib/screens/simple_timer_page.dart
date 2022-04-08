@@ -14,9 +14,9 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
 
   // Simple Timer variables
   late TimerController _timerController;
-  TimerStyle _timerStyle = TimerStyle.ring;
-  TimerProgressIndicatorDirection _progressIndicatorDirection = TimerProgressIndicatorDirection.clockwise;
-  TimerProgressTextCountDirection _progressTextCountDirection = TimerProgressTextCountDirection.count_down;
+  final TimerStyle _timerStyle = TimerStyle.ring;
+  final TimerProgressIndicatorDirection _progressIndicatorDirection = TimerProgressIndicatorDirection.clockwise;
+  final TimerProgressTextCountDirection _progressTextCountDirection = TimerProgressTextCountDirection.count_down;
 
   @override
   void initState(){
