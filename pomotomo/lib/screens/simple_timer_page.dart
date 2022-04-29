@@ -20,7 +20,7 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
   final TimerProgressIndicatorDirection _progressIndicatorDirection = TimerProgressIndicatorDirection.clockwise;
   final TimerProgressTextCountDirection _progressTextCountDirection = TimerProgressTextCountDirection.count_down;
 
-  Duration _workDuruation = const Duration(seconds: 2);
+  Duration _workDuruation = const Duration(minutes: 25);
   Duration _breakDuruation = const Duration(minutes: 5);
 
   @override
@@ -51,6 +51,7 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
 
   void bye(){
     Navigator.push(context, MaterialPageRoute(builder:(context) => const break_timer_page()));
+    _timerController.reset();
   }
 
   @override
@@ -60,8 +61,8 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
         child: Column(
           children: <Widget>[
               Container(
-                padding: const EdgeInsets.all(35),
-                margin: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.all(45),
+                //margin: const EdgeInsets.symmetric(vertical: 10),
                 child: SimpleTimer(
                   duration: _workDuruation,
                   controller: _timerController,
@@ -76,52 +77,36 @@ class _simple_timer_pageState extends State<simple_timer_page> with SingleTicker
                 ),
               ),
 
-            Column(
-              children:<Widget>[
-                const Text("Ready to be productive?", textAlign: TextAlign.left, style: TextStyle(fontWeight: FontWeight.bold)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    ElevatedButton(
-                        onPressed: _timerController.start,
-                        child: const Text("Start"),
+            Expanded(
+              child: Column(
+                children:<Widget>[
+                  const Text("Ready to be productive?", textAlign: TextAlign.left, style: TextStyle(fontWeight: FontWeight.bold)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      ElevatedButton(
+                          onPressed: _timerController.start,
+                          child: const Text("Start"),
 
-                    ),
+                      ),
 
-                    ElevatedButton(
-                        onPressed: () => _timerController.pause(),
-                        child: const Text("Pause"),
-                    ),
+                      ElevatedButton(
+                          onPressed: () => _timerController.pause(),
+                          child: const Text("Pause"),
+                      ),
 
-                    ElevatedButton(
-                      onPressed: restartTimer,
-                      child: const Text("Restart"),
+                      ElevatedButton(
+                        onPressed: restartTimer,
+                        child: const Text("Restart"),
 
-                    ),
+                      ),
+                    ],
+                  ),
 
-                    ElevatedButton(
-                        onPressed: ()=> {
-                          setState(() {
-                            _timerController.add(const Duration(seconds:5));
-                          })
-                        },
-                        child: const Text("Add Time")
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ElevatedButton(
-                        onPressed: (){},
-                        child: const Text("Start Break")
-                    )
-                  ]
+                  //Row of Buttons
 
-                ),
-                //Row of Buttons
-
-              ],
+                ],
+              ),
             ),
           ],
         ),

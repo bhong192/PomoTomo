@@ -8,6 +8,7 @@ import 'package:pomotomo/screens/timer_page.dart';
 import 'package:pomotomo/screens/stats_page.dart';
 import 'package:pomotomo/screens/todo_list_page.dart';
 import 'package:pomotomo/screens/login_page.dart';
+import 'package:pomotomo/screens/todo_test_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,8 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //timer_page(),
     simple_timer_page(),
-    stats_page(),
-    todo_list_page(),
+    //stats_page(),
+    todo_test_page()
+    //todo_list_page(),
   ];
 
   void _onItemTapped(int index) {
@@ -108,10 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.access_time_outlined),
             label: 'Timer',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.analytics_outlined),
-            label: 'Stats',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.analytics_outlined),
+          //   label: 'Stats',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment_turned_in_outlined),
             label: 'Tasks',

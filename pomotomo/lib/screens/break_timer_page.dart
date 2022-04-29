@@ -17,7 +17,7 @@ class _break_timer_pageState extends State<break_timer_page> with SingleTickerPr
   final TimerProgressTextCountDirection _progressTextCountDirection = TimerProgressTextCountDirection.count_down;
 
 
-  Duration _workDuruation = const Duration(seconds: 5);
+  Duration _workDuruation = const Duration(minutes: 5);
 
   void exit(){
     Navigator.pop(context, true);
@@ -32,7 +32,7 @@ class _break_timer_pageState extends State<break_timer_page> with SingleTickerPr
             children: <Widget>[
               Container(
                 padding: const EdgeInsets.all(35),
-                margin: const EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.symmetric(vertical: 30),
                 child: SimpleTimer(
                     duration: _workDuruation,
                     //controller: _timerController,
@@ -46,6 +46,9 @@ class _break_timer_pageState extends State<break_timer_page> with SingleTickerPr
                     strokeWidth: 10,
                     onEnd: exit
                 ),
+              ),
+              const Text(
+                "Take a break!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35)
               ),
             ],
           )
